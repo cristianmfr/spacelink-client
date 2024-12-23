@@ -4,6 +4,7 @@ import { User } from '@/graphql/graphql'
 import { apolloClient } from '@/config/apollo-client.config'
 import { SIGN_IN } from '@/api/mutations/sign-in'
 import { GET_CURRENT_USER } from '@/api/queries/get-current-user'
+import { redirect } from 'next/navigation'
 import Cookies from 'js-cookie'
 
 type SignInPayload = {
@@ -52,9 +53,13 @@ export const useAuth = create<AuthStore>((set, get) => ({
 
                 set({ user, token: accessToken })
             })
-            .catch(() => {
+            .catch((err) => {
                 set({ isLoggingIn: false })
                 toast.error('Erro ao realizar o login! Tente novamente.')
+                console.log(err.message)
+            })
+            .finally(() => {
+                redirect('/app')
             })
     },
 

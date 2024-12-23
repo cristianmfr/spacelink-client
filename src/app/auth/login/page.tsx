@@ -13,7 +13,7 @@ import { useAuth } from '@/hooks/use-auth'
 import { Label } from '@radix-ui/react-label'
 import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 type SignInSchema = {
@@ -23,7 +23,6 @@ type SignInSchema = {
 
 export default function Page() {
     const { signIn, isLoggingIn } = useAuth()
-    const router = useRouter()
 
     const { register, handleSubmit } = useForm<SignInSchema>()
 
@@ -31,8 +30,7 @@ export default function Page() {
         await signIn({
             email: data.email,
             normalizedPassword: data.normalizedPassword,
-        })
-        router.push('/app/categories')
+        }).then(() => redirect('/app'))
     }
 
     return (
