@@ -44,27 +44,27 @@ const data = {
         },
         {
             title: 'Gerenciamento',
-            url: '/app/customers',
+            url: '/app/management',
             icon: UserRoundSearch,
             items: [
                 {
                     title: 'Usuários',
-                    url: '/app/customers',
+                    url: '/app/management/customers',
                 },
             ],
         },
         {
             title: 'Financeiro',
-            url: '/app/wallet',
+            url: '/app/finance',
             icon: Wallet,
             items: [
                 {
                     title: 'Carteira',
-                    url: '/app/wallet',
+                    url: '/app/finance/wallet',
                 },
                 {
                     title: 'Saque',
-                    url: '/financeiro/saque',
+                    url: '/app/finance/withdraw',
                 },
             ],
         },
