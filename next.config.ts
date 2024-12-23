@@ -1,7 +1,9 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-    /* config options here */
+    env: {
+        GRAPHQL_API_URL: 'https://spacelink-server.onrender.com/graphql',
+    },
 }
 
 export default nextConfig

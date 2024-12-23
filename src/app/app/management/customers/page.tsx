@@ -93,18 +93,18 @@ export default function Customers() {
         <div className='flex flex-col w-full gap-2'>
             <TableHeader
                 handlePlusFunction={() =>
-                    router.push('/app/customers?p=create&step=1')
+                    router.push('/app/management/customers?p=create&step=1')
                 }
             />
             <DataTable columns={columns} data={customer?.getCustomers || []} />
             <CreateCustomer
                 step={searchParams.get('step') || '1'}
                 isOpen={containsCreateParams}
-                onClose={() => router.push('/app/customers')}
+                onClose={() => router.push('/app/management/customers')}
             />
             <ChangeCustomerStatus
                 isOpen={containsCustomerId}
-                onClose={() => router.push('/app/customers')}
+                onClose={() => router.push('/app/management/customers')}
                 refetch={refetch}
             />
         </div>

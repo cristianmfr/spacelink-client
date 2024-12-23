@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/providers/theme-provider'
 import ApolloProvider from '@/components/providers/apollo-provider'
 import { Toaster } from 'sonner'
 import { Suspense } from 'react'
+import Loading from '@/components/loading'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -37,9 +38,7 @@ export default function RootLayout({
                     enableSystem
                 >
                     <ApolloProvider>
-                        <Suspense fallback={<div>...</div>}>
-                            {children}
-                        </Suspense>
+                        <Suspense fallback={<Loading />}>{children}</Suspense>
                     </ApolloProvider>
                     <Toaster richColors />
                 </ThemeProvider>
