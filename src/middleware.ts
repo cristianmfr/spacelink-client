@@ -11,11 +11,11 @@ export async function middleware(req: NextRequest) {
     }
 
     if (!token && req.nextUrl.pathname.startsWith('/app')) {
-        const loginUrl = new URL('/login', req.url)
+        const loginUrl = new URL('/auth/login', req.url)
         return NextResponse.redirect(loginUrl)
     }
 
-    if (token && req.nextUrl.pathname === '/login') {
+    if (token && req.nextUrl.pathname === '/auth/login') {
         const appUrl = new URL('/app', req.url)
         return NextResponse.redirect(appUrl)
     }
