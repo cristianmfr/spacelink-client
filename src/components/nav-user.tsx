@@ -1,12 +1,6 @@
 'use client'
 
-import {
-    BadgeCheck,
-    Bell,
-    ChevronsUpDown,
-    CreditCard,
-    LogOut,
-} from 'lucide-react'
+import { BadgeCheck, ChevronsUpDown, CreditCard, LogOut } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -103,17 +97,21 @@ export function NavUser({
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem
+                                onClick={() =>
+                                    router.push('/app/user/profile?p=account')
+                                }
+                            >
                                 <BadgeCheck />
                                 Conta
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem
+                                onClick={() =>
+                                    router.push('/app/user/profile?p=finance')
+                                }
+                            >
                                 <CreditCard />
                                 Financeiro
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                <Bell />
-                                Notificações
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />

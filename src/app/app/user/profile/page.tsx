@@ -5,6 +5,8 @@ import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import Account from './components/account'
 import { useSearchParams, useRouter } from 'next/navigation'
+import Finance from './components/finance'
+import clsx from 'clsx'
 
 export default function Profile() {
     const router = useRouter()
@@ -25,10 +27,13 @@ export default function Profile() {
             </div>
             <Separator className='mt-2' />
             <div className='grid grid-cols-4 gap-2 w-full'>
-                <div className='flex flex-col items-start w-full col-span-1'>
+                <div className='flex flex-col gap-1 items-start w-full col-span-1'>
                     <Button
                         variant='ghost'
-                        className='w-full justify-start items-start'
+                        className={clsx(
+                            searchParams.get('p') === 'account' && 'bg-accent',
+                            'w-full justify-start items-start'
+                        )}
                         onClick={() =>
                             router.push('/app/user/profile?p=account')
                         }
@@ -37,24 +42,19 @@ export default function Profile() {
                     </Button>
                     <Button
                         variant='ghost'
-                        className='w-full justify-start items-start'
+                        className={clsx(
+                            searchParams.get('p') === 'finance' && 'bg-accent',
+                            'w-full justify-start items-start'
+                        )}
                         onClick={() =>
                             router.push('/app/user/profile?p=finance')
                         }
                     >
                         Financeiro
                     </Button>
-                    <Button
-                        variant='ghost'
-                        className='w-full justify-start items-start'
-                        onClick={() =>
-                            router.push('/app/user/profile?p=advanced')
-                        }
-                    >
-                        Avençado
-                    </Button>
                 </div>
                 {getProfileParams === 'account' && <Account />}
+                {getProfileParams === 'finance' && <Finance />}
             </div>
         </div>
     )
